@@ -7,25 +7,33 @@
 
 import Foundation
 import SwiftUI
+import OpenAI
 
 // Service to handle AI content generation for social media posts
 class ContentGenerationService {
     // Shared instance (singleton)
     static let shared = ContentGenerationService()
     
-    // API key for OpenAI (in production, this would be stored securely)
-    private var apiKey: String = ""
+    // OpenAI client
+    private var openAI: OpenAI?
     
     // OpenAI API endpoints
     private let textCompletionEndpoint = "https://api.openai.com/v1/chat/completions"
     private let imageGenerationEndpoint = "https://api.openai.com/v1/images/generations"
     
     // Initialize with default settings
-    private init() {}
+    private init() {
+        // Check if there's an API key from OpenAIIntegrationService
+        let apiKey = OpenAIIntegrationService.shared.apiKey
+        if !apiKey.isEmpty {
+            configure(withAPIKey: apiKey)
+        }
+    }
     
     // Set the API key
     func configure(withAPIKey key: String) {
-        self.apiKey = key
+        // Initialize the OpenAI client with the API key
+        self.openAI = OpenAI(apiToken: key)
     }
     
     // Generate content for a specific platform based on a topic
@@ -38,8 +46,36 @@ class ContentGenerationService {
         // Prepare the prompt for content generation
         let prompt = prepareContentPrompt(platform: platform, topic: topic, recentPosts: recentPosts)
         
-        // Create the request to OpenAI
-        createTextCompletionRequest(prompt: prompt, completion: completion)
+        // Check if OpenAI client is initialized
+        if openAI != nil {
+            // Create a chat query to OpenAI
+            let query = ChatQuery(
+                messages: [
+                    .init(role: .system, content: "You are a professional social media content creator specializing in automotive repair business marketing.")!,
+                    .init(role: .user, content: prompt)!
+                ],
+                model: "gpt-4-turbo",
+                maxTokens: 500,
+                temperature: 0.7
+            )
+            
+            // Call the OpenAI API
+            _ = openAI?.chats(query: query) { result in
+                switch result {
+                case .success(let response):
+                    if let content = response.choices.first?.message.content {
+                        completion(.success(content))
+                    } else {
+                        completion(.failure(NSError(domain: "ContentGenerationService", code: 1001, userInfo: [NSLocalizedDescriptionKey: "No content returned from OpenAI"])))
+                    }
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+        } else {
+            // Fall back to simulation if no API key is available
+            createSimulatedTextCompletion(prompt: prompt, completion: completion)
+        }
     }
     
     // Generate an image for a post
@@ -51,8 +87,42 @@ class ContentGenerationService {
         // Prepare the prompt for image generation
         let prompt = prepareImagePrompt(post: post, platform: platform)
         
-        // Create the request to DALL-E
-        createImageGenerationRequest(prompt: prompt, completion: completion)
+        // Check if OpenAI client is initialized
+        if openAI != nil {
+            // Create an image generation query
+            let query = ImagesQuery(
+                prompt: prompt,
+                model: "dall-e-3",
+                n: 1,
+                quality: .standard,
+                size: ImagesQuery.Size._1024
+            )
+            
+            // Call the OpenAI API
+            _ = openAI?.images(query: query) { result in
+                switch result {
+                case .success(let response):
+                    if let imageUrl = response.data.first?.url {
+                        // Download the image data
+                        self.downloadImage(from: imageUrl) { imageDataResult in
+                            switch imageDataResult {
+                            case .success(let data):
+                                completion(.success(data))
+                            case .failure(let error):
+                                completion(.failure(error))
+                            }
+                        }
+                    } else {
+                        completion(.failure(NSError(domain: "ContentGenerationService", code: 1003, userInfo: [NSLocalizedDescriptionKey: "No image URL returned from OpenAI"])))
+                    }
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+        } else {
+            // Fall back to simulation if no API key is available
+            createSimulatedImageGeneration(prompt: prompt, completion: completion)
+        }
     }
     
     // Refine a post based on user feedback
@@ -64,8 +134,36 @@ class ContentGenerationService {
         // Prepare the prompt for content refinement
         let prompt = prepareRefinementPrompt(post: post, feedback: feedback)
         
-        // Create the request to OpenAI
-        createTextCompletionRequest(prompt: prompt, completion: completion)
+        // Check if OpenAI client is initialized
+        if openAI != nil {
+            // Create a chat query for refinement
+            let query = ChatQuery(
+                messages: [
+                    .init(role: .system, content: "You are a professional social media content creator. Refine the post based on the user's feedback.")!,
+                    .init(role: .user, content: prompt)!
+                ],
+                model: "gpt-4-turbo",
+                maxTokens: 500,
+                temperature: 0.5
+            )
+            
+            // Call the OpenAI API
+            _ = openAI?.chats(query: query) { result in
+                switch result {
+                case .success(let response):
+                    if let content = response.choices.first?.message.content {
+                        completion(.success(content))
+                    } else {
+                        completion(.failure(NSError(domain: "ContentGenerationService", code: 1001, userInfo: [NSLocalizedDescriptionKey: "No content returned from OpenAI"])))
+                    }
+                case .failure(let error):
+                    completion(.failure(error))
+                }
+            }
+        } else {
+            // Fall back to simulation if no API key is available
+            createSimulatedTextCompletion(prompt: prompt, completion: completion)
+        }
     }
     
     // Research recent news on a topic
@@ -128,13 +226,44 @@ class ContentGenerationService {
         """
     }
     
-    // Create a request to the OpenAI text completion API
-    private func createTextCompletionRequest(
+    // MARK: - Helper Methods for OpenAI API Integration
+    
+    // Download image from URL
+    private func downloadImage(from urlString: String, completion: @escaping (Result<Data, Error>) -> Void) {
+        guard let url = URL(string: urlString) else {
+            completion(.failure(NSError(domain: "ContentGenerationService", code: 1003, userInfo: [NSLocalizedDescriptionKey: "Invalid image URL"])))
+            return
+        }
+        
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
+                completion(.failure(NSError(domain: "ContentGenerationService", code: 1004, userInfo: [NSLocalizedDescriptionKey: "Invalid server response"])))
+                return
+            }
+            
+            if let data = data {
+                completion(.success(data))
+            } else {
+                completion(.failure(NSError(domain: "ContentGenerationService", code: 1005, userInfo: [NSLocalizedDescriptionKey: "No data received"])))
+            }
+        }
+        
+        task.resume()
+    }
+    
+    // MARK: - Simulation methods (fallbacks when API is unavailable)
+    
+    // Create a simulated text completion when OpenAI is unavailable
+    private func createSimulatedTextCompletion(
         prompt: String,
         completion: @escaping (Result<String, Error>) -> Void
     ) {
-        // In a real implementation, this would make an actual API call
-        // For this example, we'll simulate the response
+        // This is a fallback when the OpenAI client isn't configured
         DispatchQueue.global().async {
             // Simulate API delay
             Thread.sleep(forTimeInterval: 2.0)
@@ -156,13 +285,12 @@ class ContentGenerationService {
         }
     }
     
-    // Create a request to the DALL-E image generation API
-    private func createImageGenerationRequest(
+    // Create a simulated image generation when OpenAI is unavailable
+    private func createSimulatedImageGeneration(
         prompt: String,
         completion: @escaping (Result<Data, Error>) -> Void
     ) {
-        // In a real implementation, this would make an actual API call
-        // For this example, we'll simulate with a placeholder image
+        // This is a fallback when the OpenAI client isn't configured
         DispatchQueue.global().async {
             // Simulate API delay
             Thread.sleep(forTimeInterval: 3.0)

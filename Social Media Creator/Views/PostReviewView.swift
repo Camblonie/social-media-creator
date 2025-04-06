@@ -233,26 +233,81 @@ struct PostReviewView: View {
         post.userFeedback = userFeedback
         post.status = .inRevision
         
-        // In a real app, this would call the ContentGenerationService
-        // For now, just simulate with a delay
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            // Simulate revised content
-            post.content = "REVISED: \(post.content)\n\nRevised based on feedback: \(userFeedback)"
+        // Use ContentGenerationService to revise the post based on feedback
+        contentService.refinePost(post: post, feedback: userFeedback) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let revisedContent):
+                    // Update the post with the AI-revised content
+                    self.post.content = revisedContent
+                    
+                    // If the platform requires an image and we need to regenerate it
+                    if let platform = self.findPlatform(withID: self.post.targetPlatformID), platform.requiresImage {
+                        // Regenerate the image based on the revised content
+                        self.contentService.generateImage(for: self.post, platform: platform) { imageResult in
+                            DispatchQueue.main.async {
+                                switch imageResult {
+                                case .success(let imageData):
+                                    self.post.imageData = imageData
+                                    self.saveRevisedPost(success: true)
+                                case .failure(let error):
+                                    print("Warning: Failed to regenerate image: \(error.localizedDescription)")
+                                    // Continue even if image generation fails
+                                    self.saveRevisedPost(success: true)
+                                }
+                            }
+                        }
+                    } else {
+                        // No image needed, just save the revised post
+                        self.saveRevisedPost(success: true)
+                    }
+                    
+                case .failure(let error):
+                    print("Failed to revise post: \(error.localizedDescription)")
+                    self.saveRevisedPost(success: false, error: error)
+                }
+            }
+        }
+    }
+    
+    // Save the revised post and update UI
+    private func saveRevisedPost(success: Bool, error: Error? = nil) {
+        // Save changes to the model context
+        do {
+            try modelContext.save()
             
-            // Save changes to the model context
-            do {
-                try modelContext.save()
+            if success {
                 alertTitle = "Post Updated"
                 alertMessage = "The post has been revised based on your feedback."
-                showingAlert = true
-            } catch {
-                alertTitle = "Error"
-                alertMessage = "Failed to save revision: \(error.localizedDescription)"
-                showingAlert = true
+            } else if let error = error {
+                alertTitle = "Revision Error"
+                alertMessage = "Failed to revise the post: \(error.localizedDescription)"
             }
             
-            self.isRevising = false
-            self.userFeedback = ""
+            showingAlert = true
+        } catch {
+            alertTitle = "Error"
+            alertMessage = "Failed to save revision: \(error.localizedDescription)"
+            showingAlert = true
+        }
+        
+        self.isRevising = false
+        self.userFeedback = ""
+    }
+    
+    // Helper to find platform by ID
+    private func findPlatform(withID id: String?) -> SocialMediaPlatform? {
+        guard let id = id else { return nil }
+        
+        do {
+            let descriptor = FetchDescriptor<SocialMediaPlatform>(predicate: #Predicate { platform in
+                platform.id == id
+            })
+            let platforms = try modelContext.fetch(descriptor)
+            return platforms.first
+        } catch {
+            print("Error fetching platform: \(error)")
+            return nil
         }
     }
     
@@ -266,26 +321,25 @@ struct PostReviewView: View {
             post.userFeedback = userFeedback
         }
         
-        // In a real app, this would call the SocialMediaPostingService
-        // For now, just simulate with a delay
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            // Simulate posting
-            post.status = .posted
-            post.postDate = Date()
-            
-            // Save changes to the model context
-            do {
-                try modelContext.save()
-                alertTitle = "Post Approved"
-                alertMessage = "The post has been approved and scheduled for posting to \(post.platform)."
-                showingAlert = true
-            } catch {
-                alertTitle = "Error"
-                alertMessage = "Failed to approve post: \(error.localizedDescription)"
-                showingAlert = true
+        // Use the SocialMediaPostingService to post the post
+        postingService.postToSocialMedia(post: post, modelContext: modelContext) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(_):
+                    // The post status is already updated in the service
+                    
+                    // Show feedback and dismiss
+                    alertTitle = "Post Approved"
+                    alertMessage = "The post has been approved and posted to \(self.post.platform)."
+                    showingAlert = true
+                    isPosting = false
+                case .failure(let error):
+                    alertTitle = "Error"
+                    alertMessage = "Failed to post: \(error.localizedDescription)"
+                    showingAlert = true
+                    isPosting = false
+                }
             }
-            
-            self.isPosting = false
         }
     }
     
