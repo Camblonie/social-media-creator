@@ -15,6 +15,9 @@ final class AppSettings {
     var googleDocURL: String?        // URL to the Google Doc with instructions
     var googleSheetURL: String?      // URL to the Google Sheet for tracking posts
     
+    // OpenAI integration
+    var openAIConnected: Bool = false // Whether OpenAI is connected for DALL-E image generation
+    
     // Schedule settings
     var activeDays: [Weekday]        // Days of the week to post
     var dailyTopics: [String: String] // Topics for each day (day name -> topic)
@@ -34,7 +37,8 @@ final class AppSettings {
         defaultTopic: String = "Automotive maintenance tips",
         companyLogo: Data? = nil,
         companyName: String = "Automotive Repair Shop",
-        businessType: String = "Auto Repair"
+        businessType: String = "Auto Repair",
+        openAIConnected: Bool = false
     ) {
         self.googleDocURL = googleDocURL
         self.googleSheetURL = googleSheetURL
@@ -44,6 +48,7 @@ final class AppSettings {
         self.companyLogo = companyLogo
         self.companyName = companyName
         self.businessType = businessType
+        self.openAIConnected = openAIConnected
     }
     
     // Get today's topic based on the day of the week

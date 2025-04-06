@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 // Service to handle Google Docs and Sheets integration
-class GoogleIntegrationService {
+class GoogleIntegrationService: ObservableObject {
     // Shared instance (singleton)
     static let shared = GoogleIntegrationService()
     
@@ -18,14 +18,95 @@ class GoogleIntegrationService {
     private var clientSecret: String = ""
     private var isConfigured: Bool = false
     
+    // Authentication state
+    @Published var isAuthenticated: Bool = false
+    @Published var userName: String = ""
+    @Published var userEmail: String = ""
+    @Published var userProfileImage: UIImage?
+    @Published var isAuthenticating: Bool = false
+    @Published var authError: String?
+    
     // Initialize with default settings
-    private init() {}
+    private init() {
+        // Check if user is already authenticated from keychain
+        checkSavedAuthentication()
+    }
     
     // Configure the service with Google API credentials
     func configure(clientID: String, clientSecret: String) {
         self.clientID = clientID
         self.clientSecret = clientSecret
         self.isConfigured = true
+    }
+    
+    // Check for saved authentication
+    private func checkSavedAuthentication() {
+        // In a production app, this would check keychain for stored tokens
+        // For this sample, we'll simulate no saved authentication
+        self.isAuthenticated = false
+    }
+    
+    // Sign in with Google
+    func signIn(completion: @escaping (Bool, Error?) -> Void) {
+        // Reset any previous errors
+        self.authError = nil
+        self.isAuthenticating = true
+        
+        // In a real app, this would show the Google Sign In UI and handle the OAuth flow
+        // For this example, we'll simulate the authentication process
+        DispatchQueue.global().async {
+            // Simulate network delay
+            Thread.sleep(forTimeInterval: 2.0)
+            
+            DispatchQueue.main.async {
+                // Simulate successful login (90% of the time)
+                if Bool.random(probability: 0.9) {
+                    self.isAuthenticated = true
+                    self.userName = "Scott Campbell"
+                    self.userEmail = "scott.campbell@example.com"
+                    
+                    // Generate a simple profile image
+                    let renderer = UIGraphicsImageRenderer(size: CGSize(width: 100, height: 100))
+                    self.userProfileImage = renderer.image { ctx in
+                        UIColor.systemBlue.setFill()
+                        ctx.fill(CGRect(x: 0, y: 0, width: 100, height: 100))
+                        
+                        let initials = "SC"
+                        let attributes: [NSAttributedString.Key: Any] = [
+                            .font: UIFont.boldSystemFont(ofSize: 40),
+                            .foregroundColor: UIColor.white
+                        ]
+                        let attributedString = NSAttributedString(string: initials, attributes: attributes)
+                        let stringSize = attributedString.size()
+                        let rect = CGRect(x: (100 - stringSize.width) / 2, y: (100 - stringSize.height) / 2, width: stringSize.width, height: stringSize.height)
+                        attributedString.draw(in: rect)
+                    }
+                    
+                    completion(true, nil)
+                } else {
+                    // Simulate failure
+                    let error = NSError(
+                        domain: "GoogleIntegrationService",
+                        code: 1002,
+                        userInfo: [NSLocalizedDescriptionKey: "Failed to authenticate with Google"]
+                    )
+                    self.authError = error.localizedDescription
+                    completion(false, error)
+                }
+                
+                self.isAuthenticating = false
+            }
+        }
+    }
+    
+    // Sign out
+    func signOut() {
+        // In a real app, this would revoke tokens and clear OAuth state
+        // For this example, we'll just reset our properties
+        self.isAuthenticated = false
+        self.userName = ""
+        self.userEmail = ""
+        self.userProfileImage = nil
     }
     
     // Read formatting instructions from a Google Doc
@@ -161,4 +242,11 @@ struct PostSummary {
     let platform: String
     let topic: String
     let postDate: Date
+}
+
+// Extension for random bool with probability
+extension Bool {
+    static func random(probability: Double) -> Bool {
+        return Double.random(in: 0...1) < probability
+    }
 }
