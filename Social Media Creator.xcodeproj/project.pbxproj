@@ -1,0 +1,580 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXContainerItemProxy section */
+		BC4EDC5C2DA2CFF80084494B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BC4EDC3F2DA2CFF70084494B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BC4EDC462DA2CFF70084494B;
+			remoteInfo = "Social Media Creator";
+		};
+		BC4EDC662DA2CFF80084494B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BC4EDC3F2DA2CFF70084494B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BC4EDC462DA2CFF70084494B;
+			remoteInfo = "Social Media Creator";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BC4EDC472DA2CFF70084494B /* Social Media Creator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Social Media Creator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC4EDC5B2DA2CFF80084494B /* Social Media CreatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Social Media CreatorTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC4EDC652DA2CFF80084494B /* Social Media CreatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Social Media CreatorUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		BC4EDC6D2DA2CFF80084494B /* Exceptions for "Social Media Creator" folder in "Social Media Creator" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = BC4EDC462DA2CFF70084494B /* Social Media Creator */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		BC4EDC492DA2CFF70084494B /* Social Media Creator */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				BC4EDC6D2DA2CFF80084494B /* Exceptions for "Social Media Creator" folder in "Social Media Creator" target */,
+			);
+			path = "Social Media Creator";
+			sourceTree = "<group>";
+		};
+		BC4EDC5E2DA2CFF80084494B /* Social Media CreatorTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Social Media CreatorTests";
+			sourceTree = "<group>";
+		};
+		BC4EDC682DA2CFF80084494B /* Social Media CreatorUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Social Media CreatorUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BC4EDC442DA2CFF70084494B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BC4EDC582DA2CFF80084494B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BC4EDC622DA2CFF80084494B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BC4EDC3E2DA2CFF70084494B = {
+			isa = PBXGroup;
+			children = (
+				BC4EDC492DA2CFF70084494B /* Social Media Creator */,
+				BC4EDC5E2DA2CFF80084494B /* Social Media CreatorTests */,
+				BC4EDC682DA2CFF80084494B /* Social Media CreatorUITests */,
+				BC4EDC482DA2CFF70084494B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BC4EDC482DA2CFF70084494B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BC4EDC472DA2CFF70084494B /* Social Media Creator.app */,
+				BC4EDC5B2DA2CFF80084494B /* Social Media CreatorTests.xctest */,
+				BC4EDC652DA2CFF80084494B /* Social Media CreatorUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BC4EDC462DA2CFF70084494B /* Social Media Creator */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BC4EDC6E2DA2CFF80084494B /* Build configuration list for PBXNativeTarget "Social Media Creator" */;
+			buildPhases = (
+				BC4EDC432DA2CFF70084494B /* Sources */,
+				BC4EDC442DA2CFF70084494B /* Frameworks */,
+				BC4EDC452DA2CFF70084494B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				BC4EDC492DA2CFF70084494B /* Social Media Creator */,
+			);
+			name = "Social Media Creator";
+			packageProductDependencies = (
+			);
+			productName = "Social Media Creator";
+			productReference = BC4EDC472DA2CFF70084494B /* Social Media Creator.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BC4EDC5A2DA2CFF80084494B /* Social Media CreatorTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BC4EDC732DA2CFF80084494B /* Build configuration list for PBXNativeTarget "Social Media CreatorTests" */;
+			buildPhases = (
+				BC4EDC572DA2CFF80084494B /* Sources */,
+				BC4EDC582DA2CFF80084494B /* Frameworks */,
+				BC4EDC592DA2CFF80084494B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BC4EDC5D2DA2CFF80084494B /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				BC4EDC5E2DA2CFF80084494B /* Social Media CreatorTests */,
+			);
+			name = "Social Media CreatorTests";
+			packageProductDependencies = (
+			);
+			productName = "Social Media CreatorTests";
+			productReference = BC4EDC5B2DA2CFF80084494B /* Social Media CreatorTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		BC4EDC642DA2CFF80084494B /* Social Media CreatorUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BC4EDC762DA2CFF80084494B /* Build configuration list for PBXNativeTarget "Social Media CreatorUITests" */;
+			buildPhases = (
+				BC4EDC612DA2CFF80084494B /* Sources */,
+				BC4EDC622DA2CFF80084494B /* Frameworks */,
+				BC4EDC632DA2CFF80084494B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BC4EDC672DA2CFF80084494B /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				BC4EDC682DA2CFF80084494B /* Social Media CreatorUITests */,
+			);
+			name = "Social Media CreatorUITests";
+			packageProductDependencies = (
+			);
+			productName = "Social Media CreatorUITests";
+			productReference = BC4EDC652DA2CFF80084494B /* Social Media CreatorUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BC4EDC3F2DA2CFF70084494B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1620;
+				LastUpgradeCheck = 1620;
+				TargetAttributes = {
+					BC4EDC462DA2CFF70084494B = {
+						CreatedOnToolsVersion = 16.2;
+					};
+					BC4EDC5A2DA2CFF80084494B = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = BC4EDC462DA2CFF70084494B;
+					};
+					BC4EDC642DA2CFF80084494B = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = BC4EDC462DA2CFF70084494B;
+					};
+				};
+			};
+			buildConfigurationList = BC4EDC422DA2CFF70084494B /* Build configuration list for PBXProject "Social Media Creator" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BC4EDC3E2DA2CFF70084494B;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = BC4EDC482DA2CFF70084494B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BC4EDC462DA2CFF70084494B /* Social Media Creator */,
+				BC4EDC5A2DA2CFF80084494B /* Social Media CreatorTests */,
+				BC4EDC642DA2CFF80084494B /* Social Media CreatorUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BC4EDC452DA2CFF70084494B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BC4EDC592DA2CFF80084494B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BC4EDC632DA2CFF80084494B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BC4EDC432DA2CFF70084494B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BC4EDC572DA2CFF80084494B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BC4EDC612DA2CFF80084494B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BC4EDC5D2DA2CFF80084494B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BC4EDC462DA2CFF70084494B /* Social Media Creator */;
+			targetProxy = BC4EDC5C2DA2CFF80084494B /* PBXContainerItemProxy */;
+		};
+		BC4EDC672DA2CFF80084494B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BC4EDC462DA2CFF70084494B /* Social Media Creator */;
+			targetProxy = BC4EDC662DA2CFF80084494B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		BC4EDC6F2DA2CFF80084494B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Social Media Creator/Social_Media_Creator.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Social Media Creator/Preview Content\"";
+				DEVELOPMENT_TEAM = WH7XKRC8QZ;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Social Media Creator/Info.plist";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.scottcampbell.Social-Media-Creator";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BC4EDC702DA2CFF80084494B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Social Media Creator/Social_Media_Creator.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Social Media Creator/Preview Content\"";
+				DEVELOPMENT_TEAM = WH7XKRC8QZ;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Social Media Creator/Info.plist";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.scottcampbell.Social-Media-Creator";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		BC4EDC712DA2CFF80084494B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BC4EDC722DA2CFF80084494B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BC4EDC742DA2CFF80084494B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WH7XKRC8QZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.scottcampbell.Social-Media-CreatorTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Social Media Creator.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Social Media Creator";
+			};
+			name = Debug;
+		};
+		BC4EDC752DA2CFF80084494B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WH7XKRC8QZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.scottcampbell.Social-Media-CreatorTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Social Media Creator.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Social Media Creator";
+			};
+			name = Release;
+		};
+		BC4EDC772DA2CFF80084494B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WH7XKRC8QZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.scottcampbell.Social-Media-CreatorUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Social Media Creator";
+			};
+			name = Debug;
+		};
+		BC4EDC782DA2CFF80084494B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = WH7XKRC8QZ;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.scottcampbell.Social-Media-CreatorUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Social Media Creator";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BC4EDC422DA2CFF70084494B /* Build configuration list for PBXProject "Social Media Creator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC4EDC712DA2CFF80084494B /* Debug */,
+				BC4EDC722DA2CFF80084494B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BC4EDC6E2DA2CFF80084494B /* Build configuration list for PBXNativeTarget "Social Media Creator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC4EDC6F2DA2CFF80084494B /* Debug */,
+				BC4EDC702DA2CFF80084494B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BC4EDC732DA2CFF80084494B /* Build configuration list for PBXNativeTarget "Social Media CreatorTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC4EDC742DA2CFF80084494B /* Debug */,
+				BC4EDC752DA2CFF80084494B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BC4EDC762DA2CFF80084494B /* Build configuration list for PBXNativeTarget "Social Media CreatorUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC4EDC772DA2CFF80084494B /* Debug */,
+				BC4EDC782DA2CFF80084494B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BC4EDC3F2DA2CFF70084494B /* Project object */;
+}
